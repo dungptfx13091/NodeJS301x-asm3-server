@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+require("dotenv").config();
 
 const userRouter = require("./routes/user");
 const productRouter = require("./routes/product");
@@ -27,9 +28,7 @@ app.use("/", (req, res) => {
 
 //Connect to mongoBD
 mongoose
-  .connect(
-    "mongodb+srv://dungptfx13091:eNrQbIF1jMq8td8m@cluster0.5obi4ll.mongodb.net/asm_3?retryWrites=true&w=majority"
-  )
+  .connect(process.env.MONGODB_URI)
   .then(() => {
     console.log("Connected to database");
   })
@@ -37,7 +36,7 @@ mongoose
     console.log(err);
   });
 
-const server = app.listen(5000, () => {
+const server = app.listen(process.env.PORT || 5000, () => {
   console.log("Server Started");
 });
 const io = require("./socket").init(server);
