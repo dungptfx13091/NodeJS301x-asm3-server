@@ -12,7 +12,13 @@ const historyRouter = require("./routes/history");
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: ["http://localhost:3000", "http://localhost:3001"],
+    methods: ["GET,POST,PUT,PATH,DELETE,OPTIONS"],
+    credentials: true,
+  })
+);
 app.use(bodyParser.json());
 
 app.use(userRouter);
