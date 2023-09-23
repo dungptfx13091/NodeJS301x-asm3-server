@@ -10,7 +10,7 @@ exports.login = async (req, res) => {
     const validPassword = await bcrypt.compare(password, user.password);
 
     if (user && validPassword) {
-      if (user.role !== 2) {
+      if (user.role >= 2) {
         res.json({
           message:
             "Access denied, you don't have permission to access on this server",
