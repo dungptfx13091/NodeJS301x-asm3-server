@@ -6,6 +6,6 @@ const adminRouter = Router();
 
 const { authUser } = require("../middleware/authUser");
 
-adminRouter.post("/login", adminController.login);
+adminRouter.post("/admin/login", adminController.login);
 
 module.exports = adminRouter;

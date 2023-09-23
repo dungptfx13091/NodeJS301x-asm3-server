@@ -10,15 +10,23 @@ exports.login = async (req, res) => {
     const validPassword = await bcrypt.compare(password, user.password);
 
     if (user && validPassword) {
-      const token = jsonwebtoken.sign({ _id: user._id }, "mk");
-      res.cookie("token", token, { httpOnly: true });
+      if (user.role !== 2) {
+        res.json({
+          message:
+            "Access denied, you don't have permission to access on this server",
+          isLogin: false,
+        });
+      } else {
+        const token = jsonwebtoken.sign({ _id: user._id }, "mk");
+        res.cookie("token", token, { httpOnly: true });
 
-      res.setHeader("token", token).json({
-        message: "Sucess!",
-        user: user,
-        isLogin: true,
-        token: token,
-      });
+        res.setHeader("token", token).json({
+          message: "Sucess!",
+          user: user,
+          isLogin: true,
+          token: token,
+        });
+      }
     } else {
       res.json({
         message: "Password Not Correct!",
