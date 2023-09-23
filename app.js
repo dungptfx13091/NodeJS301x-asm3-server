@@ -32,6 +32,7 @@ app.use(productRouter);
 app.use(cartRouter);
 app.use(orderRouter);
 app.use(historyRouter);
+app.use(adminRouter);
 
 app.use("/", (req, res) => {
   console.log("Page Not Found");
