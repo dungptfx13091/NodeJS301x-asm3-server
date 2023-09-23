@@ -9,6 +9,7 @@ const productRouter = require("./routes/product");
 const cartRouter = require("./routes/cart");
 const orderRouter = require("./routes/order");
 const historyRouter = require("./routes/history");
+const adminRouter = require("./routes/admin");
 
 const app = express();
 
