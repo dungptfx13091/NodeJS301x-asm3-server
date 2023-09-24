@@ -17,7 +17,7 @@ exports.login = async (req, res) => {
           isLogin: false,
         });
       } else {
-        const token = jsonwebtoken.sign({ _id: user._id }, "mk");
+        const token = jsonwebtoken.sign({ _id: user._id }, "admin");
         res.cookie("token", token, { httpOnly: true });
 
         res.setHeader("token", token).json({
