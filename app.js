@@ -13,6 +13,7 @@ const adminRouter = require("./routes/admin");
 
 const app = express();
 
+app.enable("trust proxy", 1);
 app.use(
   cors({
     origin: [
