@@ -16,8 +16,8 @@ const app = express();
 app.use(
   cors({
     origin: [
-      "https://asm3-client-app.netlify.app",
-      "https://asm3-admin-app.netlify.app",
+      "https://asm3-client-app.netlify.app/",
+      "https://asm3-admin-app.netlify.app/",
       "http://localhost:3000",
       "http://localhost:3001",
     ],
